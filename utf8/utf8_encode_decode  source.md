@@ -263,3 +263,46 @@ LUAMOD_API int luaopen_utf8 (lua_State *L) {
 
 ```
 
+------
+
+## UTF-8
+
+[UTF-1](http://czyborra.com/utf/#UTF-1)'s disadvantages led to the invention of UTF-2 alias (filesystem-safe) FSS-UTF, now known as the standard 8bit transformation format . UTF-8 goes like this: 
+
+```c
+putwchar(c)
+{
+  if (c < 0x80) {
+    putchar (c);
+  }
+  else if (c < 0x800) {
+    putchar (0xC0 | c>>6);
+    putchar (0x80 | c & 0x3F);
+  }
+  else if (c < 0x10000) {
+    putchar (0xE0 | c>>12);
+    putchar (0x80 | c>>6 & 0x3F);
+    putchar (0x80 | c & 0x3F);
+  }
+  else if (c < 0x200000) {
+    putchar (0xF0 | c>>18);
+    putchar (0x80 | c>>12 & 0x3F);
+    putchar (0x80 | c>>6 & 0x3F);
+    putchar (0x80 | c & 0x3F);
+  }
+}
+```
+
+The binary representation of the character's integer value is thus simply spread across the bytes and the number of high bits set in the lead byte announces the number of bytes in the multibyte sequence: 
+
+
+
+```
+ bytes | bits | representation
+     1 |    7 | 0vvvvvvv
+     2 |   11 | 110vvvvv 10vvvvvv
+     3 |   16 | 1110vvvv 10vvvvvv 10vvvvvv
+     4 |   21 | 11110vvv 10vvvvvv 10vvvvvv 10vvvvvv
+```
+
+(Actually, UTF-8 continues to represent up to 31 bits with up to 6 bytes, but it is generally expected that the one million code points of the 20 bits offered by UTF-16 and 4-byte UTF-8 will suffice to cover all characters and that we will never get to see any Unicode character definitions beyond that.)  
