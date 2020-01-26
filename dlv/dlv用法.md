@@ -42,3 +42,5 @@
 | trace            | 设置跟踪点                  |
 | types            | 打印类型列表                |
 | vars             | 打印某个包内的(全局)变量    |
+
+http://mirror.centos.org/centos/8/BaseOS/x86_64/os/Packages/python3-hawkey-0.35.1-9.el8_1.x86_64.rpm
