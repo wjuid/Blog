@@ -1,6 +1,6 @@
 #  					Golang汇编快速指南 				
 
- 				 					 					华子 					 				 					 · 2015-04-24 17:37:04 · 11206 次点击 · 					预计阅读时间 8 分钟 · 					2分钟之前 开始浏览   					 				
+ 				 					 					华子 					 				 					 · 2015-04-24 17:37:04 · 10934 次点击 · 					预计阅读时间 8 分钟 · 					不到1分钟之前 开始浏览   					 				
 
 这是一个创建于 2015-04-24 17:37:04 的文章，其中的信息可能已经有所发展或是发生改变。
 
@@ -183,4 +183,4 @@ leaf function的解释：
 Leaf function，A function that does not require a stack frame. A leaf function does not require a function table entry. It cannot call any functions, allocate space, or save any nonvolatile registers. It can leave the stack unaligned while it executes.
 ```
 
-名称**SP**总是会引用在之前提到过的虚拟栈帧。而硬件中的**SP**寄存器使用**R13**。
+名称**SP**总是会引用在之前提到过的虚拟栈帧。而硬件中的**SP**寄存器使用**R13**
